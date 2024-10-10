@@ -15,6 +15,9 @@ var focus = true;
 $(document).ready(function () {
 	$('.message').focus();
 
+	// Add the audio element to play the notification sound
+	$('body').append('<audio id="notificationSound" src="GOTMAIL.WAV" preload="auto"></audio>');
+
 	client.emit('join', room);
 	room = room.substr(1);
 	if (localStorage.getItem('chatlog') && localStorage.getItem('version') === version) {
@@ -39,10 +42,15 @@ $(document).ready(function () {
 		data.time = formatDate(new Date());
 		data.date = new Date();
 		appendLog(data);
+		
+		// Notification logic: If window is not in focus, increment unread and play sound
 		if (!focus) {
 			unread++;
 			document.title = `LowChat | ${room} (${unread})`;
 			$('#icon').prop('href', 'images/fav-unread.png');
+
+			// Play notification sound
+			document.getElementById('notificationSound').play();
 		}
 	});
 
@@ -164,3 +172,4 @@ $(window).focus(function () {
 }).blur(function () {
 	focus = false;
 });
+
