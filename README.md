@@ -2,7 +2,7 @@
 
 A powerful chatting application which supports commands, nicknames, rooms, and is simplistic in design.
 
-The hosted server can be found [here]([https://chat.hyperjs.ml/](https://lowchat-b4db372ecd1f.herokuapp.com/))
+The hosted server can be found [here](https://lowchat-b4db372ecd1f.herokuapp.com/).
 
 # Commands
 ## Client:
